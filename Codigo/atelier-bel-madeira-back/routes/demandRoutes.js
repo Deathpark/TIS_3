@@ -107,6 +107,18 @@ router.delete('/delete', async (req, res) => {
 
 });
 
+router.delete('/deleteAll', async (req, res) => {
+
+    try {
+        await Demand.delete();
+
+        res.status(200).json({ message: 'Demanda removida!' });
+    } catch (error) {
+        res.status(500).json({error: error});
+    }
+
+});
+
 // update
 router.patch('/:id', async (req, res) => {
     let {id, clientId, productStatus, url} = req.body;
